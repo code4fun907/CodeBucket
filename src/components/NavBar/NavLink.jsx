@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const NavLink = ({ to, className = "", linkClassName = "" }) => (
+const NavLink = ({ to, className = "", linkClassName = "", text }) => (
   <li className={className}>
     <Link className={linkClassName} to={to}>
-      Sign In
+      {text}
     </Link>
   </li>
 );
