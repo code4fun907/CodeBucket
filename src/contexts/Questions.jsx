@@ -15,7 +15,7 @@ const fakeQuestions = [
   {
     id: 1,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "What the dog do? man",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -26,7 +26,7 @@ const fakeQuestions = [
   {
     id: 2,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "What the heck is react",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -37,7 +37,7 @@ const fakeQuestions = [
   {
     id: 3,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "Angular is pretty weird",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -48,7 +48,7 @@ const fakeQuestions = [
   {
     id: 4,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "Anyone know how to center a div?",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -59,7 +59,7 @@ const fakeQuestions = [
   {
     id: 5,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "VUEJS Composition vs Options API?",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -70,7 +70,7 @@ const fakeQuestions = [
   {
     id: 6,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "What is 1 + 1 + 1 + 1 / 2 * 5?",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -81,7 +81,7 @@ const fakeQuestions = [
   {
     id: 7,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "Dogecoin going to the moon?",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:
@@ -92,7 +92,7 @@ const fakeQuestions = [
   {
     id: 8,
     author: "Nuke4Fun",
-    title: "Center element thats absolute in TailwindCss",
+    title: "Need help with this flex layout",
     contentPreview:
       "PBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDIPBw1xZeYrvqS7NAUfWv0VfMqtZXY1RM4DqHidO2Dtjc5dKOGJ7FLG8ORCFslsmkPa6kqvuZNwMzjY6y1dAclxmWtU9pBhoLooUDI",
     content:

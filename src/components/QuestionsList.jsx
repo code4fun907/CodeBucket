@@ -1,4 +1,5 @@
 import Question from "./Question";
+import uuid from "react-uuid";
 import { useState, useEffect } from "react";
 
 const QuestionsList = ({ questions }) => {
@@ -11,7 +12,18 @@ const QuestionsList = ({ questions }) => {
       .getPropertyValue("height");
 
     setQuestionsListHeight(`calc((100vh - ${navBarHeight}) - 1rem)`);
-  });
+  }, []);
+
+  const formatQuestion = (question) => {
+    if (question.item) {
+      return {
+        title: question.item.title,
+        contentPreview: question.item.contentPreview,
+      };
+    }
+
+    return { title: question.title, contentPreview: question.contentPreview };
+  };
 
   return (
     <div
@@ -19,10 +31,10 @@ const QuestionsList = ({ questions }) => {
       style={{ height: questionsListHeight }}
     >
       {questions.map((question) => (
-        <div key={question.id} className="mb-4">
+        <div key={uuid()} className="mb-4">
           <Question
-            title={question.title}
-            contentPreview={question.contentPreview}
+            title={formatQuestion(question).title}
+            contentPreview={formatQuestion(question).contentPreview}
           />
         </div>
       ))}

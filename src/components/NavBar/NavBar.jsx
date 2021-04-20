@@ -2,15 +2,16 @@ import NavLink from "./NavLink";
 import SearchInput from "../ui/SearchInput";
 import LogoIcon from "../../icons/LogoIcon";
 import Hamburger from "../../icons/Hamburger";
+import { useSearch } from "../../contexts/Search";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { questionsQuery, setQuestionsQuery } = useSearch();
 
   const handleChange = (e) => {
-    setSearchQuery(e.target.value);
+    setQuestionsQuery(e.target.value);
   };
 
   return (
@@ -29,7 +30,7 @@ const NavBar = () => {
         <div className="ml-8">
           <SearchInput
             f="questions"
-            value={searchQuery}
+            value={questionsQuery}
             onChange={handleChange}
             className="hidden p-2 pl-2 md:block"
             iClassName="hidden md:block"
@@ -46,7 +47,7 @@ const NavBar = () => {
             <div className="mb-4">
               <SearchInput
                 f="questions"
-                value={searchQuery}
+                value={questionsQuery}
                 onChange={handleChange}
                 className="w-full p-4 text-sm"
               />
