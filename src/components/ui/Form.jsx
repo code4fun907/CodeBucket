@@ -30,7 +30,7 @@ const Errors = ({ errors }) => {
   return (
     <div>
       {Object.entries(errors).map(([key, _]) => (
-        <div className="bg-red-400 rounded p-2 text-white mb-2">
+        <div key={key} className="bg-red-400 rounded p-2 text-white mb-2">
           {errors[key].message}
         </div>
       ))}

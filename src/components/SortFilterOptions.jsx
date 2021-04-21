@@ -3,7 +3,6 @@ import AddList from "./ui/AddList";
 import { useSearch } from "../contexts/Search";
 import { useToasts } from "react-toast-notifications";
 import { RadioGroup } from "@headlessui/react";
-import { useState } from "react";
 
 const RadioItem = ({ value, text, ...props }) => (
   <RadioGroup.Option value={value}>
@@ -38,7 +37,7 @@ const SortFilterOptions = () => {
   };
 
   const handleDeleteFilterTag = (index) => {
-    setFilterTags((prev) => prev.filter((_, i) => i != index));
+    setFilterTags((prev) => prev.filter((_, i) => i !== index));
   };
 
   return (

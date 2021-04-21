@@ -20,6 +20,9 @@ const filterQuestions = (questions, tags, by) => {
     case "comments":
       copyOfQuestions.sort((a, b) => b.comments - a.comments);
       break;
+
+    default:
+      break;
   }
 
   if (tags.length === 0) return copyOfQuestions;

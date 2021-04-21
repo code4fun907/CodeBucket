@@ -28,13 +28,7 @@ const SignupForm = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setTimeout(() => {
-      console.log(data);
-      setIsSubmitting(false);
-    }, 2000);
-  };
+  const onSubmit = async (data) => {};
 
   return (
     <AuthLayout>
