@@ -5,10 +5,13 @@ import Hamburger from "../../icons/Hamburger";
 import { useSearch } from "../../contexts/Search";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../contexts/Auth";
 
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { questionsQuery, setQuestionsQuery } = useSearch();
+
+  const { user, signout } = useAuth();
 
   const handleChange = (e) => {
     setQuestionsQuery(e.target.value);
@@ -24,8 +27,19 @@ const NavBar = () => {
           <LogoIcon />
         </Link>
         <ul className="hidden text-white gap-8 md:flex">
-          <NavLink to="/auth/signin" text="Sign in" />
-          <NavLink to="/auth/signup" text="Sign up" />
+          {user ? (
+            <>
+              <p className="text-white">Signed in</p>
+              <button onClick={() => signout()} className="bg-blue-500 p-2">
+                sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink to="/auth/signin" text="Sign in" />
+              <NavLink to="/auth/signup" text="Sign up" />
+            </>
+          )}
         </ul>
         <div className="ml-8">
           <SearchInput

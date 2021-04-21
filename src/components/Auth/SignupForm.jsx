@@ -9,6 +9,7 @@ import { signupSchema } from "../../utils/validation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const SignupForm = () => {
   const {
@@ -18,6 +19,8 @@ const SignupForm = () => {
   } = useForm({ resolver: yupResolver(signupSchema) });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const history = useHistory();
 
   const {
     signupWithEmailAndPassword,
@@ -32,18 +35,21 @@ const SignupForm = () => {
     setIsSubmitting(true);
     await signupWithEmailAndPassword(data.email, data.password);
     setIsSubmitting(false);
+    history.push("/");
   };
 
   const onSignInWithGithub = async () => {
     setIsSubmitting(true);
     await signinWithGithub();
     setIsSubmitting(false);
+    history.push("/");
   };
 
   const onSignInWithGoogle = async () => {
     setIsSubmitting(true);
     await signinWithGoogle();
     setIsSubmitting(false);
+    history.push("/");
   };
 
   return (
