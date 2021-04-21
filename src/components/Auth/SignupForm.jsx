@@ -48,8 +48,6 @@ const SignupForm = () => {
 
   return (
     <AuthLayout>
-      <p>{JSON.stringify(user)}</p>
-      <button onClick={() => signout()}>sign out</button>
       <h1 className="my-8 text-2xl text-center">Signup</h1>
       <Form.Errors errors={errors} />
       <Form onSubmit={handleSubmit(onSubmit)}>
