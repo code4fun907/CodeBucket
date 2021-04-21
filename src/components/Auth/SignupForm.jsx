@@ -4,28 +4,17 @@ import OAuthButton from "./OAuthButton";
 import AuthLayout from "./AuthLayout";
 import Form from "../ui/Form";
 import Input from "../ui/Input";
-import * as yup from "yup";
+import { signupSchema } from "../../utils/validation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-
-const schema = yup.object().shape({
-  email: yup.string().email("invalid email").required("email is required!"),
-  password: yup
-    .string()
-    .min(8, "password must be at least 8 long!")
-    .required("password is required!"),
-  passwordConfirm: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "passwords must match"),
-});
 
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(signupSchema) });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async (data) => {};
