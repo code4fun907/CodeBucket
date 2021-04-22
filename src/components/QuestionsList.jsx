@@ -1,18 +1,10 @@
 import Question from "./Question";
 import uuid from "react-uuid";
+import useHeight from "../hooks/useHeight";
 import { useState, useEffect } from "react";
 
 const QuestionsList = ({ questions }) => {
-  const [questionsListHeight, setQuestionsListHeight] = useState("0px");
-
-  useEffect(() => {
-    // TODO: There has got to be a better way
-    const navBarHeight = window
-      .getComputedStyle(document.getElementById("navheader", null))
-      .getPropertyValue("height");
-
-    setQuestionsListHeight(`calc((100vh - ${navBarHeight}) - 1rem)`);
-  }, []);
+  const questionsListHeight = useHeight();
 
   // TODO: figure out a way to make this less ugly
   const formatQuestion = (question) => {

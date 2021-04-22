@@ -1,4 +1,5 @@
 import Home from "../pages/Home";
+import DashBoard from "../pages/DashBoard";
 import Layout from "./ui/Layout";
 import SignupForm from "./Auth/SignupForm";
 import SigninForm from "./Auth/SigninForm";
@@ -16,6 +17,9 @@ const App = () => (
         </Route>
         <Route exact path="/auth/signin">
           <SigninForm />
+        </Route>
+        <Route exact path="/dashboard">
+          <DashBoard />
         </Route>
       </Switch>
     </Layout>
