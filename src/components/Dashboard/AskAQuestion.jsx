@@ -3,37 +3,59 @@ import TextInfo from "../ui/TextInfo";
 import Input from "../ui/Input";
 import ReactMarkdown from "react-markdown";
 import YourQuestions from "./YourQuestions";
-import { useState } from "react";
+import useMediaQuery from "../../hooks/useMediaQuery";
+import { useState, useEffect } from "react";
 import { useQuestion } from "./contexts/Question";
 
 const AskAQuestion = () => {
   const { currentAskingQuestion, setCurrentAskingQuestion } = useQuestion();
   const [previewShowing, setPreviewShowing] = useState(false);
   const [yourQuestionsShowing, setYourQuestionsShowing] = useState(false);
+  //
+  // TODO: this is so extremely hacky :facepalm
+  // basically I need to make sure if the user is on the 'your questions' tab
+  // on a small screen then expand to a large screen it switches back to showing
+  // the ask a question panel so that there is not 2 your questions sections
+  // right next to eachother
+  const shouldOnlyShowAskAQuestion = useMediaQuery("(min-width: 768px)");
+
+  useEffect(() => {
+    setYourQuestionsShowing(false);
+  }, [shouldOnlyShowAskAQuestion]);
 
   const togglePreview = () =>
     setPreviewShowing((previewShowing) => !previewShowing);
 
+  const generateAskAQuestionButtonClasses = () =>
+    `p-2 text-white rounded mr-2 ${
+      yourQuestionsShowing ? "bg-blue-200" : "bg-blue-400"
+    }`;
+
+  const generateYourQuestionsButtonClasses = () =>
+    `p-2 text-white rounded mr-2 ${
+      yourQuestionsShowing ? "bg-blue-400" : "bg-blue-200"
+    }`;
+
+  const renderTabButtons = () => (
+    <div className="md:hidden mb-2">
+      <button
+        className={generateAskAQuestionButtonClasses()}
+        onClick={() => setYourQuestionsShowing(false)}
+      >
+        ask a question
+      </button>
+      <button
+        className={generateYourQuestionsButtonClasses()}
+        onClick={() => setYourQuestionsShowing(true)}
+      >
+        your questions
+      </button>
+    </div>
+  );
+
   return (
     <>
-      <div className="md:hidden">
-        <button
-          className={`p-2 text-white rounded mr-2 ${
-            yourQuestionsShowing ? "bg-blue-200" : "bg-blue-400"
-          }`}
-          onClick={() => setYourQuestionsShowing(false)}
-        >
-          ask a question
-        </button>
-        <button
-          className={`p-2 text-white rounded mr-2 ${
-            yourQuestionsShowing ? "bg-blue-400" : "bg-blue-200"
-          }`}
-          onClick={() => setYourQuestionsShowing(true)}
-        >
-          your questions
-        </button>
-      </div>
+      {renderTabButtons()}
       {!yourQuestionsShowing ? (
         <>
           <h1 className="mt-2 text-xl">Ask a question</h1>

@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }) => {
 };
 
 const LeftSection = ({ children }) => (
-  <div className="flex flex-col w-full md:w-1/3 hidden md:block">
+  <div className="flex flex-col hidden w-full md:w-1/3 md:block">
     {children}
   </div>
 );
