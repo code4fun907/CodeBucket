@@ -1,4 +1,5 @@
 import Card from "../ui/Card";
+import Button from "../ui/Button";
 
 const SmallQuestionPreview = ({ title, contentPreview }) => {
   return (
@@ -12,12 +13,15 @@ const SmallQuestionPreview = ({ title, contentPreview }) => {
           : contentPreview}
       </p>
       <div className="mt-2">
-        <button className="bg-blue-400 p-2 text-white rounded text-sm mr-2 hover:bg-white hover:text-gray-600 transition-all transition border border-blue-400">
+        <Button className="text-sm mr-2 hover:bg-white hover:text-gray-600">
           veiw
-        </button>
-        <button className="p-2 text-sm text-gray-600 border border-blue-400 rounded hover:text-white hover:bg-blue-400 transition transition-all">
+        </Button>
+        <Button
+          className="text-sm hover:text-white hover:bg-blue-400"
+          primary={false}
+        >
           edit
-        </button>
+        </Button>
       </div>
     </Card>
   );

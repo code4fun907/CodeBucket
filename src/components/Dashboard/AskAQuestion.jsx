@@ -1,4 +1,5 @@
 import Card from "../ui/Card";
+import Button from "../ui/Button";
 import TextInfo from "../ui/TextInfo";
 import HorizontalAddList from "../ui/HorizontalAddList";
 import Input from "../ui/Input";
@@ -128,12 +129,12 @@ const AskAQuestion = () => {
           <TextInfo className="mb-1">
             any valid markdown is valid here!
           </TextInfo>
-          <button
-            className="p-2 mb-2 text-xs text-white bg-blue-400 rounded w-28"
+          <Button
+            className="mb-2 text-xs w-28 hover:bg-blue-500 "
             onClick={togglePreview}
           >
             toggle preview
-          </button>
+          </Button>
           {renderPreviewOrEditor()}
           <HorizontalAddList
             name="Tags"
@@ -141,9 +142,9 @@ const AskAQuestion = () => {
             onAdd={handleAddNewQuestionTag}
             onDelete={handleDeleteNewQuestionTag}
           />
-          <button className="bg-blue-400 p-2 rounded text-white text-md w-40 my-2">
+          <Button className="w-40 my-2 text-md hover:bg-blue-500">
             Ask the question
-          </button>
+          </Button>
         </>
       ) : (
         <YourQuestions />
