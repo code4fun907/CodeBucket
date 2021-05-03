@@ -3,7 +3,7 @@ import MiddleModal from "./MiddleModal";
 import Card from "./Card";
 import TextInfo from "./TextInfo";
 
-const VerticalAddList = ({ name, items = [], onAdd, onDelete }) => {
+const HorizontalAddList = ({ name, items = [], onAdd, onDelete }) => {
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [newItem, setNewItem] = useState("");
 
@@ -25,7 +25,7 @@ const VerticalAddList = ({ name, items = [], onAdd, onDelete }) => {
   const formattedName = name.slice(0, name.length - 1).toLowerCase();
 
   return (
-    <div>
+    <div className="mt-2">
       <div className="flex items-center">
         <p>{name}</p>
         <button
@@ -34,24 +34,25 @@ const VerticalAddList = ({ name, items = [], onAdd, onDelete }) => {
         >
           +
         </button>
+        <div className="flex mt-1 ml-2">
+          {items.length > 0 ? (
+            items.map((item, index) => (
+              <Card
+                key={index}
+                onClick={() => onDelete(index)}
+                className="p-2 bg-white ml-2"
+              >
+                {item}
+              </Card>
+            ))
+          ) : (
+            <TextInfo className="pl-2">Add a new {formattedName}</TextInfo>
+          )}
+        </div>
       </div>
-      <div className="mt-1">
-        {items.length > 0 ? (
-          items.map((item, index) => (
-            <div
-              key={index}
-              className="pl-2 text-gray-500 border-l-4 border-blue-500 cursor-pointer hover:border-red-500 transition-all hover:border-l-8"
-              onClick={() => onDelete(index)}
-            >
-              {item}
-            </div>
-          ))
-        ) : (
-          <TextInfo className="pl-2">Add a new {formattedName}</TextInfo>
-        )}
-      </div>
+      {/* TODO: make it so user can only add 3 tags */}
       {items.length > 0 && (
-        <TextInfo>tip: click a item again to remove it</TextInfo>
+        <TextInfo>tip: click a {formattedName} again to remove it</TextInfo>
       )}
       <MiddleModal isOpen={addModalOpen} onClose={handleAddModalClose}>
         <Card className="flex flex-col p-4 bg-white">
@@ -77,4 +78,4 @@ const VerticalAddList = ({ name, items = [], onAdd, onDelete }) => {
   );
 };
 
-export default VerticalAddList;
+export default HorizontalAddList;

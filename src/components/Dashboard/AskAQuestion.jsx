@@ -1,14 +1,24 @@
 import Card from "../ui/Card";
 import TextInfo from "../ui/TextInfo";
+import HorizontalAddList from "../ui/HorizontalAddList";
 import Input from "../ui/Input";
 import ReactMarkdown from "react-markdown";
 import YourQuestions from "./YourQuestions";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useState, useEffect } from "react";
+import { useToasts } from "react-toast-notifications";
 import { useQuestion } from "./contexts/Question";
 
 const AskAQuestion = () => {
-  const { currentAskingQuestion, setCurrentAskingQuestion } = useQuestion();
+  const {
+    currentAskingQuestionTitle,
+    setCurrentAskingQuestionTitle,
+    currentAskingQuestionBody,
+    setCurrentAskingQuestionBody,
+    currentAskingQuestionTags,
+    setCurrentAskingQuestionTags,
+  } = useQuestion();
+  const { addToast } = useToasts();
   const [previewShowing, setPreviewShowing] = useState(false);
   const [yourQuestionsShowing, setYourQuestionsShowing] = useState(false);
 
@@ -37,7 +47,7 @@ const AskAQuestion = () => {
     }`;
 
   const renderTabButtons = () => (
-    <div className="md:hidden mb-2">
+    <div className="mb-2 md:hidden">
       <button
         className={generateAskAQuestionButtonClasses()}
         onClick={() => setYourQuestionsShowing(false)}
@@ -53,11 +63,37 @@ const AskAQuestion = () => {
     </div>
   );
 
+  const handleAddNewQuestionTag = (tag) => {
+    if (tag === "")
+      return addToast("Cant add a empty tag", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+
+    if (currentAskingQuestionTags.length === 5)
+      return addToast("Cant add more then 5 tags!", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+
+    if (currentAskingQuestionTags.includes(tag))
+      return addToast(`You already have a ${tag} tag`, {
+        appearance: "error",
+        autoDismiss: true,
+      });
+
+    setCurrentAskingQuestionTags((prev) => [...prev, tag]);
+  };
+
+  const handleDeleteNewQuestionTag = (index) => {
+    setCurrentAskingQuestionTags((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const renderPreviewOrEditor = () =>
     previewShowing ? (
       <Card className="w-full h-full p-2 overflow-scroll bg-white rounded">
         <ReactMarkdown className="markdown">
-          {currentAskingQuestion}
+          {currentAskingQuestionBody}
         </ReactMarkdown>
       </Card>
     ) : (
@@ -66,8 +102,8 @@ const AskAQuestion = () => {
           placeholder="type some markdown and it will be put into the preview"
           resize="none"
           className="w-full h-full p-2 rounded resize-none"
-          onChange={(e) => setCurrentAskingQuestion(e.target.value)}
-          value={currentAskingQuestion}
+          onChange={(e) => setCurrentAskingQuestionBody(e.target.value)}
+          value={currentAskingQuestionBody}
         />
       </Card>
     );
@@ -81,7 +117,12 @@ const AskAQuestion = () => {
           <TextInfo className="mb-4">
             make sure to ask a descriptive question
           </TextInfo>
-          <Input type="text" text="Title" />
+          <Input
+            type="text"
+            text="Title"
+            value={currentAskingQuestionTitle}
+            onChange={(e) => setCurrentAskingQuestionTitle(e.target.value)}
+          />
           <TextInfo>make sure to use a descriptive title</TextInfo>
           <h1 className="mt-4 text-gray-600">Question</h1>
           <TextInfo className="mb-1">
@@ -94,6 +135,15 @@ const AskAQuestion = () => {
             toggle preview
           </button>
           {renderPreviewOrEditor()}
+          <HorizontalAddList
+            name="Tags"
+            items={currentAskingQuestionTags}
+            onAdd={handleAddNewQuestionTag}
+            onDelete={handleDeleteNewQuestionTag}
+          />
+          <button className="bg-blue-400 p-2 rounded text-white text-md w-40 my-2">
+            Ask the question
+          </button>
         </>
       ) : (
         <YourQuestions />

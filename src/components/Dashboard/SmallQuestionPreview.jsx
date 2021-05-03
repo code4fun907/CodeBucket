@@ -12,10 +12,10 @@ const SmallQuestionPreview = ({ title, contentPreview }) => {
           : contentPreview}
       </p>
       <div className="mt-2">
-        <button className="bg-blue-500 p-2 text-white rounded text-sm mr-2">
+        <button className="bg-blue-400 p-2 text-white rounded text-sm mr-2 hover:bg-white hover:text-gray-600 transition-all transition border border-blue-400">
           veiw
         </button>
-        <button className="p-2 text-sm border border-blue-500 rounded">
+        <button className="p-2 text-sm text-gray-600 border border-blue-400 rounded hover:text-white hover:bg-blue-400 transition transition-all">
           edit
         </button>
       </div>

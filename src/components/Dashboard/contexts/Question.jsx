@@ -10,11 +10,29 @@ const QuestionContext = createContext();
 export const useQuestion = () => useContext(QuestionContext);
 
 export const QuestionContextProvider = ({ children }) => {
-  const [currentAskingQuestion, setCurrentAskingQuestion] = useState("");
+  const [currentAskingQuestionTitle, setCurrentAskingQuestionTitle] = useState(
+    ""
+  );
+
+  const [currentAskingQuestionBody, setCurrentAskingQuestionBody] = useState(
+    ""
+  );
+
+  const [currentAskingQuestionTags, setCurrentAskingQuestionTags] = useState(
+    []
+  );
+
+  console.log("QustionContext: ", currentAskingQuestionTitle);
+  console.log("QustionContext: ", currentAskingQuestionBody);
+  console.log("QustionContext: ", currentAskingQuestionTags);
 
   const values = {
-    currentAskingQuestion,
-    setCurrentAskingQuestion,
+    currentAskingQuestionTitle,
+    setCurrentAskingQuestionTitle,
+    currentAskingQuestionBody,
+    setCurrentAskingQuestionBody,
+    currentAskingQuestionTags,
+    setCurrentAskingQuestionTags,
   };
 
   return (
