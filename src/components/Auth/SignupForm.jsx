@@ -34,7 +34,13 @@ const SignupForm = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    await signupWithEmailAndPassword(data.email, data.password);
+    try {
+      await signupWithEmailAndPassword(data.email, data.password);
+    } catch (error) {
+      setIsSubmitting(false);
+      return alert(error);
+    }
+
     setIsSubmitting(false);
     history.push("/");
   };

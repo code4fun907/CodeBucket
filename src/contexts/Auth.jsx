@@ -1,4 +1,5 @@
 import firebase from "../lib/firebase";
+import db from "../lib/db";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
@@ -15,7 +16,10 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const formattedUser = formatUser(rawUser);
+
+    db.createUser(formattedUser.uid, formattedUser);
     setUser(formattedUser);
+
     return formattedUser;
   };
 
@@ -69,7 +73,7 @@ export const AuthContextProvider = ({ children }) => {
 const formatUser = (rawUser) => ({
   uid: rawUser.uid,
   email: rawUser.email,
-  name: rawUser.displayName,
-  photoUrl: rawUser.photoURL,
+  name: rawUser.displayName || "guest",
+  photoUrl: rawUser.photoURL || "none",
   provider: rawUser.providerData[0].providerId,
 });
